@@ -5,7 +5,7 @@ from Reflector import Reflector
 #from Contact import Contact
 
 class WheelSet(object):
-    
+
     def __init__(self, seedString):
         self.wheelSet = []
         self.turnsPerWheel = [0] * len(seedString)
@@ -22,7 +22,7 @@ class WheelSet(object):
         for i in range(len(inputString)):
             ret += self.encryptChar(inputString[i])
         return ret
-        
+
     def encryptChar(self, inputChar):
         ascii = ord(inputChar)
         index = 0
@@ -37,8 +37,8 @@ class WheelSet(object):
         else:
             self.fullRotate()
         return inputChar
-            
-            
+
+
     def descend(self, integer):
         output = integer
         for i in range(len(self.wheelSet)):
@@ -47,10 +47,11 @@ class WheelSet(object):
                     output = self.wheelSet[i].wheelPaths[k].getExit()
                     break
         return output
-        
+
     def ascend(self, integer):
         output = integer
-        for i in range(len(self.wheelSet) - 2).reverse():
+        #for i in range(len(self.wheelSet) - 2).reverse(): Had trouble with reverse method, below should work same
+        for i in reversed(range(len(self.wheelSet) - 2)):
             for k in range(len(self.wheelSet[i].wheelPaths)):
                 if output == self.wheelSet[i].wheelPaths[k].getEntrance():
                     output = self.wheelSet[i].wheelPaths[k].getExit()
@@ -68,13 +69,14 @@ class WheelSet(object):
                 self.turnsPerWheel[i] += 1
                 break
             else:
-                self.rotate(i)
+                #self.rotate(i) rotate method does not exist, did you mean rotateOne?
+                self.rotateOne(i)
                 self.turnsPerWheel[i] = 0
-    
+
     def rotateOne(self, index):
         for i in range(len(self.wheelSet[index].wheelPaths)):
             self.wheelSet[index].wheelPaths[i].turn()
-    
+
     def printWheelSet(self):
         for i in range(len(self.wheelSet)):
             self.wheelSet[i].printWheel()
