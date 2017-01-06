@@ -78,8 +78,3 @@ class WheelSet(object):
     def printWheelSet(self):
         for i in range(len(self.wheelSet)):
             self.wheelSet[i].printWheel()
-
-message = "Hello world"
-newSet = WheelSet("12345679")
-message = newSet.encryptString(message)
-print message
