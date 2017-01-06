@@ -4,10 +4,12 @@ from Rotor import Rotor as Rotor
 from Contact import Contact as Contact
 
 class Wheel( Rotor ):
-    
+
     def __init__(self, seed):
-        rtr = Rotor.__init__(self)
-        self.exits = rtr.generateExits(seed)
+        #rtr = Rotor.__init__(self) No need to assign varible to Rotor_init
+        #self.exits = rtr.generateExits(seed) Wheel inheritances generateExits
+        Rotor.__init__(self)
+        self.exits = self.generateExits(seed)
         for i in range(len(self.exits)):
             self.wheelPaths.append(Contact(i, self.exits[i]))
 
