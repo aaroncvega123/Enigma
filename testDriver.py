@@ -3,6 +3,8 @@ Driver for enigma program.  Currently doesn't work due to
 inheritance issue in Wheel.py
 """
 
+from WheelSet import WheelSet
+
 
 newSet = WheelSet("12345679")
 message = newSet.encryptString("Hello world")
